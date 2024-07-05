@@ -2,7 +2,7 @@
 import Cookies from 'js-cookie'
 import React, { useEffect, useState } from 'react'
 
-function getRole() {
+function useRole() {
     const [role, setRole] = useState("")
     useEffect(() => {
         const roleInit = Cookies.get("role")
@@ -11,4 +11,4 @@ function getRole() {
   return {role}
 }
 
-export default getRole
+export default useRole

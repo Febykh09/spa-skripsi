@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { convertToRupiah } from "@/utils/formatCurrency";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import getRole from "@/utils/getRole";
+import useRole from "@/utils/useRole";
 function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
   const [filterBulan, setFilterBulan] = useState("");
   const [filterTahun, setFilterTahun] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const {role} = getRole()
+  const {role} = useRole()
   // Initial data from hooks
   const { dataLaporan, totalData } = TableLaporanHooks({
     dataKontainer,

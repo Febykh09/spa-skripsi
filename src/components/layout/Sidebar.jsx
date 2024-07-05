@@ -3,10 +3,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoLogOutOutline } from "react-icons/io5";
 import { handleLogout } from "@/actions/auth";
-import getRole from "@/utils/getRole";
+import useRole from "@/utils/useRole";
+import Image from "next/image";
 
 function Sidebar() {
-  const {role} = getRole()
+  const {role} = useRole()
   const logout = async () => {
     await handleLogout();
   };
@@ -19,7 +20,7 @@ function Sidebar() {
       <aside className="hidden md:block md:w-1/6 bg-[#F4F7FF] container mx-auto px-11 pt-12 min-h-screen">
         <nav className="flex flex-col gap-y-24">
           <div className="flex flex-row gap-x-2 items-center">
-            <img src="/gambar/logobpbatam.png" className="h-[48px]" />
+            <Image src="/gambar/logobpbatam.png" className="h-[48px]" height={48} width={48}/>
             <h3 className="text-lg font-extrabold text-[#2B52A1] leading-snug">
               <Link href={"/"}>BUP</Link>
             </h3>
