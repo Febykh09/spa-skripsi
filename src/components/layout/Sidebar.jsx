@@ -3,8 +3,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoLogOutOutline } from "react-icons/io5";
 import { handleLogout } from "@/actions/auth";
+import getRole from "@/utils/getRole";
 
 function Sidebar() {
+  const {role} = getRole()
   const logout = async () => {
     await handleLogout();
   };
@@ -398,6 +400,159 @@ function Sidebar() {
                   <Link href={"/laporan"}>Laporan</Link>
                 </h4>
               </li>
+
+              {role === "admin" &&  <li className="flex flex-row gap-x-2 items-center text-[#282828] hover:text-[#2C71E1] group">
+                {/* icon black */}
+                <svg
+                  className="group-hover:hidden"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_59_239)">
+                    <path
+                      d="M19.3747 18.0358C19.386 18.379 19.2607 18.7127 19.0264 18.9637C18.7921 19.2147 18.4679 19.3626 18.1247 19.375H1.87472C1.53157 19.3626 1.20732 19.2147 0.973019 18.9637C0.738718 18.7127 0.613471 18.379 0.624721 18.0358V4.46417C0.613471 4.12098 0.738718 3.78732 0.973019 3.53631C1.20732 3.28529 1.53157 3.13739 1.87472 3.125H18.1247C18.4679 3.13739 18.7921 3.28529 19.0264 3.53631C19.2607 3.78732 19.386 4.12098 19.3747 4.46417V18.0358Z"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M4.375 0.625V4.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8.125 0.625V4.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M11.875 0.625V4.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.625 0.625V4.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 8.125H14.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 11.875H14.375"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 15.625H10"
+                      stroke="#282828"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_59_239">
+                      <rect width="20" height="20" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                {/* icon blue */}
+                <svg
+                  className="group-hover:block hidden"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_490_1199)">
+                    <path
+                      d="M19.3757 18.0358C19.3869 18.379 19.2617 18.7127 19.0274 18.9637C18.7931 19.2147 18.4688 19.3626 18.1257 19.375H1.8757C1.53255 19.3626 1.2083 19.2147 0.973996 18.9637C0.739694 18.7127 0.614447 18.379 0.625697 18.0358V4.46417C0.614447 4.12098 0.739694 3.78732 0.973996 3.53631C1.2083 3.28529 1.53255 3.13739 1.8757 3.125H18.1257C18.4688 3.13739 18.7931 3.28529 19.0274 3.53631C19.2617 3.78732 19.3869 4.12098 19.3757 4.46417V18.0358Z"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M4.375 0.625V4.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8.125 0.625V4.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M11.875 0.625V4.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.625 0.625V4.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 8.125H14.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 11.875H14.375"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.625 15.625H10"
+                      stroke="#2C71E1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_490_1199">
+                      <rect width="20" height="20" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                <h4 className="text-base font-semibold leading-normal">
+                  <Link href={"/users"}>Users</Link>
+                </h4>
+              </li>}
             </ul>
 
             <li className="flex flex-row gap-x-2 items-center text-[#282828] hover:text-[#FB5050] group">

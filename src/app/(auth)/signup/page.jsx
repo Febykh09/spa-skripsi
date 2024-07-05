@@ -1,7 +1,8 @@
 "use client";
-import { registerAdminAccount } from "@/actions/auth";
+import { registerAdminAccount, registerUserAccount } from "@/actions/auth";
 import InputWithLabel from "@/components/atom/InputWithLabel";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -19,10 +20,10 @@ function SignUpPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await registerAdminAccount(form);
+      const response = await registerUserAccount(form);
 
       if (response) {
-        alert("Buat Akun Admin Berhasil!");
+        alert("Buat Akun User Berhasil!");
         router.push("/login");
         router.refresh();
       }
@@ -36,7 +37,7 @@ function SignUpPage() {
         onSubmit={handleSubmit}
         className="p-8 bg-primary text-white rounded-xl w-3/4 flex flex-col justify-center items-center"
       >
-        <h1 className="text-2xl font-semibold">Sign Up Admin Account</h1>
+        <h1 className="text-2xl font-semibold">Sign Up User Account</h1>
         <div className="w-full ">
           <InputWithLabel
             name={"email"}
@@ -56,12 +57,20 @@ function SignUpPage() {
             isRequired={true}
           />
         </div>
-        <Button
-          type={"submit"}
-          className={"border-white border hover:bg-zinc-600"}
-        >
-          Register
-        </Button>
+        <div className="flex justify-center flex-col items-center gap-3 mt-4">
+          <Button
+            type={"submit"}
+            className={"border-white border hover:bg-zinc-600"}
+          >
+            Register
+          </Button>
+          <Link
+            href={"/login"}
+            className={"text-white hover:underline"}
+          >
+            Login
+          </Link>
+        </div>
       </form>
     </main>
   );

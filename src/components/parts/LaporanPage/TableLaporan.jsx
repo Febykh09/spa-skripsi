@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button";
 import { convertToRupiah } from "@/utils/formatCurrency";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import getRole from "@/utils/getRole";
 function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
   const [filterBulan, setFilterBulan] = useState("");
   const [filterTahun, setFilterTahun] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-
+  const {role} = getRole()
   // Initial data from hooks
   const { dataLaporan, totalData } = TableLaporanHooks({
     dataKontainer,
@@ -250,9 +251,9 @@ function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
           </select>
         </div>
         <div className="flex items-center ml-auto">
-          <Button className="" onClick={handlePrintData}>
+          {role === "admin" && <Button className="" onClick={handlePrintData}>
             CETAK
-          </Button>
+          </Button>}
         </div>
       </div>
       <div className="mt-20">

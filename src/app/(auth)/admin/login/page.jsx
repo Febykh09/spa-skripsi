@@ -1,8 +1,7 @@
 "use client";
-import { loginAdminAccount, loginUserAccount } from "@/actions/auth";
+import { loginAdminAccount } from "@/actions/auth";
 import InputWithLabel from "@/components/atom/InputWithLabel";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -20,15 +19,15 @@ function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await loginUserAccount(form);
-
+      const response = await loginAdminAccount(form);
+      
       if (response) {
-        alert("Buat Akun User Berhasil!");
+        alert("Buat Akun Admin Berhasil!");
         router.push("/");
         router.refresh();
       }
     } catch (error) {
-      alert(error);
+      alert(error)
       router.refresh();
     }
   }
@@ -38,7 +37,7 @@ function LoginPage() {
         onSubmit={handleSubmit}
         className="p-8 bg-primary text-white rounded-xl w-3/4 flex flex-col justify-center items-center"
       >
-        <h1 className="text-2xl font-semibold">Login User Account</h1>
+        <h1 className="text-2xl font-semibold">Login Admin Account</h1>
         <div className="w-full ">
           <InputWithLabel
             name={"email"}
@@ -58,20 +57,12 @@ function LoginPage() {
             isRequired={true}
           />
         </div>
-        <div className="flex justify-center flex-col items-center gap-3 mt-4">
-          <Button
-            type={"submit"}
-            className={"border-white border hover:bg-zinc-600"}
-          >
-            Login
-          </Button>
-          <Link
-            href={"/signup"}
-            className={"text-white hover:underline"}
-          >
-            Signup
-          </Link>
-        </div>
+        <Button
+          type={"submit"}
+          className={"border-white border hover:bg-zinc-600"}
+        >
+          Login
+        </Button>
       </form>
     </main>
   );
