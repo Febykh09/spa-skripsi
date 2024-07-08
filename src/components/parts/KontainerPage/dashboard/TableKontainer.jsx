@@ -10,7 +10,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { deleteOneKontainer } from "@/actions/kontainer";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
+import useRole from "@/utils/useRole";
 
 function TableKontainer({
   allKontainerData,
@@ -19,6 +19,7 @@ function TableKontainer({
   hideAction,
   showPrint,
 }) {
+  const { role } = useRole();
   const router = useRouter();
   // console.log(allKontainerData);
   const [filters, setFilters] = useState({
@@ -79,7 +80,6 @@ function TableKontainer({
     // const imageUrl = "/Logo.png"; // Ganti dengan base64 atau URL gambar Anda
     const imageUrl = "/gambar/logobpbatam.png"; // Ganti dengan base64 atau URL gambar Anda
 
-
     // Tambahkan gambar
     const imageX = 10; // X posisi gambar
     const imageY = 10; // Y posisi gambar
@@ -110,7 +110,7 @@ function TableKontainer({
 
     filteredData.forEach((kargo, index) => {
       const kontainerIdList = JSON.parse(kargo.kontainer_id).join(", \n");
-      console.log(kontainerIdList)
+      console.log(kontainerIdList);
       const kargoData = [
         index + 1,
         kontainerIdList,
@@ -233,7 +233,11 @@ function TableKontainer({
         </section>
       )}
 
-      <section className={`${hideFilter ? "" : "mt-14"} overflow-scroll md:overflow-autow-full`}>
+      <section
+        className={`${
+          hideFilter ? "" : "mt-14"
+        } overflow-scroll md:overflow-autow-full`}
+      >
         <table className="min-w-full bg-white rounded-xl">
           <thead>
             <tr>
@@ -328,15 +332,21 @@ function TableKontainer({
                           Detail
                         </Link>
                       </Button>
-                      <Button variant={"outline"}>
-                        <Link href={`/kontainer/edit/${kargo.id}`}>Edit</Link>
-                      </Button>
-                      <Button
-                        variant={"destructive"}
-                        onClick={() => handleDeleteData(kargo.id)}
-                      >
-                        Delete
-                      </Button>
+                      {role === "user" && (
+                        <>
+                          <Button variant={"outline"}>
+                            <Link href={`/kontainer/edit/${kargo.id}`}>
+                              Edit
+                            </Link>
+                          </Button>
+                          <Button
+                            variant={"destructive"}
+                            onClick={() => handleDeleteData(kargo.id)}
+                          >
+                            Delete
+                          </Button>
+                        </>
+                      )}
                     </td>
                   )}
                   {hideAction && (

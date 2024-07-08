@@ -5,7 +5,7 @@ import React from "react";
 function DashboardCard({ title, jumlah, link, icon}) {
   return (
     <Link href={link} className="group">
-      <div className="border border-solid rounded-2xl bg-[#F4F7FF] w-[302px] pl-10 py-8 pr-16 transition-colors duration-200 group-hover:bg-[#1F3B82]">
+      <div className="border border-solid rounded-2xl bg-[#F4F7FF] w-[336px] pl-10 py-10 pr-16 transition-colors duration-200 group-hover:bg-[#1F3B82] justify-center">
         <div className="flex flex-col gap-y-7">
           <div className="flex flex-row gap-x-3 items-end">
             <Image src={icon} className='h-[44px] filter group-hover:invert group-hover:brightness-0 group-hover:sepia group-hover:contrast-200 group-hover:hue-rotate-180' width={44} height={44} />

@@ -67,22 +67,19 @@ function MainContent({
 
   return (
     <div>
-      <h1 className="text-3xl font-bold leading-snug tracking-wide text-[#9F9F9F]">
-        Dashboard
-      </h1>
-      <div className="my-5">
-        <div className="flex flex-col gap-2 mb-4">
-          <label className="text-lg font-medium" htmlFor="bulan">
-            Filter Bulan
-          </label>
+      <div className="flex flex-row justify-between items-center">
+        <h1 className="text-3xl font-bold leading-snug tracking-wide text-[#9F9F9F]">
+          Dashboard
+        </h1>
+        <div className="flex flex-row gap-x-4">
           <select
             className="rounded-2xl px-4 py-3.5 border"
             id="bulan"
             name="bulan"
             value={filterBulan}
             onChange={handleFilterBulan}
-          >
-            <option value="">-</option>
+            >
+            <option value="">Bulan</option>
             <option value="1">Januari</option>
             <option value="2">Februari</option>
             <option value="3">Maret</option>
@@ -96,19 +93,15 @@ function MainContent({
             <option value="11">November</option>
             <option value="12">Desember</option>
           </select>
-        </div>
-        <div className="flex flex-col gap-2 mb-4">
-          <label className="text-lg font-medium" htmlFor="tahun">
-            Filter Tahun
-          </label>
+
           <select
             className="rounded-2xl px-4 py-3.5 border"
             id="tahun"
             name="tahun"
             value={filterTahun}
             onChange={handleFilterTahun}
-          >
-            <option value="">-</option>
+            >
+            <option value="">Tahun</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -123,7 +116,8 @@ function MainContent({
           </select>
         </div>
       </div>
-      <ul className="grid md:grid-cols-3 gap-6 mt-10">
+      
+      <ul className="grid md:grid-cols-3 gap-10 mt-10 justify-between">
         <li>
           <DashboardCard
             title={"Lost Kargo"}
@@ -149,21 +143,28 @@ function MainContent({
           />
         </li>
       </ul>
-      <h1 className="text-3xl font-bold leading-snug tracking-wide text-[#9F9F9F] mt-24">
+
+    <div className="flex flex-col gap-y-12">
+      <h3 className="text-2xl font-semibold leading-snug text-[#202020] mt-24">
         Tagihan
-      </h1>
-      <ul>
-        <li className="text-xl font-medium leading-snug tracking-wide text-black mt-3">
-          Total Lost Cargo : {convertToRupiah(totalLostKargoTagihan)}
-        </li>
-        <li className="text-xl font-medium leading-snug tracking-wide text-black mt-3">
-          Total Kontainer : {convertToRupiah(totalKontainerTagihan)}
-        </li>
-        <li className="text-xl font-medium leading-snug tracking-wide text-black mt-3">
-          Total Alat Berat : {convertToRupiah(totalAlatBeratTagihan)}
-        </li>
-      </ul>
-    </div>
+      </h3>
+      <div className="flex flex-col gap-y-8">
+        {/* Title */}
+        <div className="flex flex-row gap-x-64 items-center border-b-2 pb-3">
+          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Lost Kargo</h4>
+          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Kontainer</h4>
+          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Alat Berat</h4>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-row gap-x-[230px]">
+          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalLostKargoTagihan)}</p>
+          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalKontainerTagihan)}</p>
+          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalAlatBeratTagihan)}</p>
+        </div>
+      </div>
+    </div>  
+  </div>
   );
 }
 

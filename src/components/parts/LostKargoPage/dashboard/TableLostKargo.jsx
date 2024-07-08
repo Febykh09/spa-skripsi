@@ -9,16 +9,16 @@ import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import moment from "moment";
-
+import useRole from "@/utils/useRole";
 function TableLostKargo({
   allLostKargoData,
   allPerusahaan,
   hideFilter,
   hideAction,
   showPrint,
-  
 }) {
   const router = useRouter();
+  const { role } = useRole();
   // console.log(allLostKargoData);
   const [filters, setFilters] = useState({
     no_nota: "",
@@ -199,7 +199,11 @@ function TableLostKargo({
         </section>
       )}
 
-      <section className={`${hideFilter ? "" : "mt-14"} overflow-scroll md:overflow-autow-full`}>
+      <section
+        className={`${
+          hideFilter ? "" : "mt-14"
+        } overflow-scroll md:overflow-autow-full`}
+      >
         <table className="min-w-full bg-white rounded-xl">
           <thead>
             <tr>
@@ -229,10 +233,8 @@ function TableLostKargo({
                   {kargo.Perusahaan.nama_perusahaan}
                 </td>
                 <td className="py-2 px-4 border-b">
-            {moment(kargo.tanggal_mulai_penumpukan).format('l')}
-                
-                  S.D.{" "}
-            {moment( kargo.tanggal_selesai_penumpukan).format("l")}
+                  {moment(kargo.tanggal_mulai_penumpukan).format("l")}
+                  S.D. {moment(kargo.tanggal_selesai_penumpukan).format("l")}
                 </td>
                 <td className="py-2 px-4 border-b uppercase">
                   {kargo.jenis_barang}
@@ -248,15 +250,21 @@ function TableLostKargo({
                         Detail
                       </Link>
                     </Button>
-                    <Button variant={"outline"}>
-                      <Link href={`/lost_kargo/edit/${kargo.id}`}>Edit</Link>
-                    </Button>
-                    <Button
-                      variant={"destructive"}
-                      onClick={() => handleDeleteData(kargo.id)}
-                    >
-                      Delete
-                    </Button>
+                    {role === "user" && (
+                      <>
+                        <Button variant={"outline"}>
+                          <Link href={`/lost_kargo/edit/${kargo.id}`}>
+                            Edit
+                          </Link>
+                        </Button>
+                        <Button
+                          variant={"destructive"}
+                          onClick={() => handleDeleteData(kargo.id)}
+                        >
+                          Delete
+                        </Button>
+                      </>
+                    )}
                   </td>
                 )}
                 {hideAction && (

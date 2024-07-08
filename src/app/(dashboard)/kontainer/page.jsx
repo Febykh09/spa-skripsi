@@ -3,6 +3,7 @@ import { getAllPerusahaan } from "@/actions/perusahaan";
 import TableKontainer from "@/components/parts/KontainerPage/dashboard/TableKontainer";
 import { Button } from "@/components/ui/button";
 import { convertToRupiah } from "@/utils/formatCurrency";
+import { getRole } from "@/utils/getRole";
 import Link from "next/link";
 import React from "react";
 
@@ -12,6 +13,8 @@ async function KontainerPage() {
   const allKontainerData = await getAllKontainer();
   // console.log(allLostKargoData)
   const allPerusahaanData = await getAllPerusahaan()
+
+  const role = await getRole()
   return (
     <main className="w-full md:w-5/6 bg-[#FDFDFD] container mx-auto pl-16 pr-12 pt-12 min-h-screen">
       <div className="flex flex-row gap-x-2 items-center text-[#202020] hover:text-[#2C71E1] group">
@@ -30,9 +33,9 @@ async function KontainerPage() {
 
       <section className="flex justify-between items-center mt-14">
         <h3 className="text-2xl font-semibold leading-snug text-[#202020]">Kontainer</h3>
-        <Button>
+       {role === "user" &&  <Button>
           <Link href={"/kontainer/tambah"}>Tambah</Link>
-        </Button>
+        </Button>}
       </section>
 
       <TableKontainer allPerusahaan={allPerusahaanData ? allPerusahaanData : []} allKontainerData={allKontainerData ? allKontainerData : []} />

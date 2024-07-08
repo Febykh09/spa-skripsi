@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { deleteOneAlatBerat } from "@/actions/alat_berat";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import useRole from "@/utils/useRole";
 
 function TableAlatBerat({
   allAlatBeratData,
@@ -16,6 +17,7 @@ function TableAlatBerat({
   hideAction,
   showPrint,
 }) {
+  const { role } = useRole();
   const router = useRouter();
   // console.log(allAlatBeratData);
   const [filters, setFilters] = useState({
@@ -194,7 +196,11 @@ function TableAlatBerat({
         </section>
       )}
 
-      <section className={`${hideFilter ? "" : "mt-14"} overflow-scroll md:overflow-autow-full`}>
+      <section
+        className={`${
+          hideFilter ? "" : "mt-14"
+        } overflow-scroll md:overflow-autow-full`}
+      >
         <table className="min-w-full bg-white rounded-xl">
           <thead>
             <tr>
@@ -246,15 +252,21 @@ function TableAlatBerat({
                         Detail
                       </Link>
                     </Button>
-                    <Button variant={"outline"}>
-                      <Link href={`/alat_berat/edit/${kargo.id}`}>Edit</Link>
-                    </Button>
-                    <Button
-                      variant={"destructive"}
-                      onClick={() => handleDeleteData(kargo.id)}
-                    >
-                      Delete
-                    </Button>
+                    {role === "user" && (
+                      <>
+                        <Button variant={"outline"}>
+                          <Link href={`/alat_berat/edit/${kargo.id}`}>
+                            Edit
+                          </Link>
+                        </Button>
+                        <Button
+                          variant={"destructive"}
+                          onClick={() => handleDeleteData(kargo.id)}
+                        >
+                          Delete
+                        </Button>
+                      </>
+                    )}
                   </td>
                 )}
                 {hideAction && (
