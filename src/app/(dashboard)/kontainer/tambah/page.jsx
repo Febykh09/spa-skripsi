@@ -7,7 +7,7 @@ import React from 'react'
 async function TambahKontainer() {
   const dataPerusahaan = await getAllPerusahaan() 
   return (
-    <main className="w-5/6 bg-gray-200 p-10 min-h-screen">
+    <main className="w-5/6 bg-[#FDFDFD] p-10 min-h-screen">
         <TambahKontainerForm perusahaan_data={dataPerusahaan? dataPerusahaan : []}/>
     </main>
   )

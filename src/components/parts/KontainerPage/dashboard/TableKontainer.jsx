@@ -175,6 +175,7 @@ function TableKontainer({
       {!hideFilter && (
         <section className="flex flex-col md:flex-row gap-4 my-11">
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="No Nota"
             type="text"
             id="no_nota"
@@ -185,6 +186,7 @@ function TableKontainer({
             isRequired={false}
           />
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="Tanggal Mulai Penumpukan"
             type="date"
             id="tanggal_mulai_penumpukan"
@@ -195,6 +197,7 @@ function TableKontainer({
             isRequired={false}
           />
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="Tanggal Selesai Penumpukan"
             type="date"
             id="tanggal_selesai_penumpukan"
@@ -209,7 +212,7 @@ function TableKontainer({
               Perusahaan
             </label>
             <select
-              className="rounded-2xl px-4 py-3.5"
+              className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
               id="perusahaan_id"
               name="perusahaan_id"
               value={filters.perusahaan_id}

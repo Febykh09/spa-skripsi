@@ -138,6 +138,7 @@ function TableAlatBerat({
       {!hideFilter && (
         <section className="flex flex-col md:flex-row gap-4 my-11">
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="No Nota"
             type="text"
             id="no_nota"
@@ -148,6 +149,7 @@ function TableAlatBerat({
             isRequired={false}
           />
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="Tanggal Mulai Penumpukan"
             type="date"
             id="tanggal_mulai_penumpukan"
@@ -158,6 +160,7 @@ function TableAlatBerat({
             isRequired={false}
           />
           <InputWithLabel
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="Tanggal Selesai Penumpukan"
             type="date"
             id="tanggal_selesai_penumpukan"
@@ -172,7 +175,7 @@ function TableAlatBerat({
               Perusahaan
             </label>
             <select
-              className="rounded-lg px-3 py-2"
+              className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
               id="perusahaan_id"
               name="perusahaan_id"
               value={filters.perusahaan_id}

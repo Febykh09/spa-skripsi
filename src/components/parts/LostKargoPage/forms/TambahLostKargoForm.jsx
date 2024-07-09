@@ -43,6 +43,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
   return (
     <form onSubmit={handleSubmit}>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="No Nota"
         type="text"
         id="no_nota"
@@ -52,6 +53,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Lokasi Penumpukan"
         type="text"
         id="lokasi_penumpukan"
@@ -65,7 +67,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
           Perusahaan
         </label>
         <select
-          className="rounded-lg px-3 py-2"
+          className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
           id="perusahaan_id"
           name="perusahaan_id"
           value={form.perusahaan_id}
@@ -81,6 +83,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         </select>
       </div>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Mulai Penumpukan"
         type="date"
         id="tanggal_mulai_penumpukan"
@@ -90,6 +93,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Selesai Penumpukan"
         type="date"
         id="tanggal_selesai_penumpukan"
@@ -99,6 +103,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Jenis Barang"
         type="text"
         id="jenis_barang"
@@ -108,6 +113,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Satuan (Ton/m3)"
         type="number"
         id="satuan"
@@ -117,6 +123,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Jumlah Uang (Rp)"
         type="number"
         id="jumlah_uang"

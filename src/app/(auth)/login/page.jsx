@@ -34,8 +34,8 @@ function LoginPage() {
   }
   return (
     <main className="container mx-auto flex justify-center items-center h-screen md:h-auto md:min-h-screen">
-      <div className="flex flex-row gap-x-64 justify-between">
-        <div className="flex flex-col gap-y-24 mt-5 w-[320px]">
+      <div className="flex flex-row gap-x-44 justify-between">
+        <div className="flex flex-col gap-y-24 mt-5 w-[380px]">
 
           <div className="flex flex-row gap-x-5 items-center">
             <img src="/gambar/logobpbatam.png" className="h-[72px]"/>
@@ -51,7 +51,7 @@ function LoginPage() {
               <form onSubmit={handleSubmit}>
                 <div>
                   <InputWithLabel
-                    className={"border-b-2"}
+                    className={"border-b-2 focus:outline-none"}
                     name={"email"}
                     value={form.email}
                     onChange={handleChange}
@@ -60,7 +60,7 @@ function LoginPage() {
                     placeholder={"example@gmail.com"}
                   />
                   <InputWithLabel
-                    className={"border-b-2"}
+                    className={"border-b-2 focus:outline-none"}
                     name={"password"}
                     value={form.password}
                     onChange={handleChange}
@@ -74,17 +74,17 @@ function LoginPage() {
             </div>
 
              {/* Button login & register */}
-            <div className="flex flex-col gap-y-6">
-              <form onSubmit={handleSubmit}>
+            <div>
+              <form className="flex flex-row gap-x-6 items-center" onSubmit={handleSubmit}>
               <Button
               type={"submit"}
-              className={"border-white border hover:bg-zinc-600"}
+              className={"text-base font-semibold px-10 py-3 rounded-2xl border-white border hover:bg-[#2563C8]"}
               >
               Login
               </Button>
               <Link
                 href={"/signup"}
-                className={"text-black hover:underline"}
+                className={"text-base font-semibold leading-normal text-[#2C71E1] hover:text-[#282828]"}
               >
               Signup
               </Link>

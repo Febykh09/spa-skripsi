@@ -69,6 +69,7 @@ function TambahKontainerForm({ perusahaan_data }) {
   return (
     <form onSubmit={handleSubmit}>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="No Nota"
         type="text"
         id="no_nota"
@@ -82,7 +83,7 @@ function TambahKontainerForm({ perusahaan_data }) {
           Ukuran Kontainer
         </label>
         <select
-          className="rounded-lg px-3 py-2"
+          className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
           id="ukuran_kontainer"
           name="ukuran_kontainer"
           value={form.ukuran_kontainer}
@@ -107,6 +108,7 @@ function TambahKontainerForm({ perusahaan_data }) {
       </div>
       
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Hari"
         type="number"
         id="hari"
@@ -120,7 +122,7 @@ function TambahKontainerForm({ perusahaan_data }) {
           Perusahaan
         </label>
         <select
-          className="rounded-lg px-3 py-2"
+          className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
           id="perusahaan_id"
           name="perusahaan_id"
           value={form.perusahaan_id}
@@ -135,6 +137,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         </select>
       </div>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Jumlah Uang (Rp)"
         type="number"
         id="jumlah_uang"
@@ -157,6 +160,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         />
       </div>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Jenis Kontainer"
         type="text"
         id="jenis_kontainer"
@@ -166,6 +170,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Mulai M1"
         type="date"
         id="tanggal_mulai_m1"
@@ -175,6 +180,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Selesai M1"
         type="date"
         id="tanggal_selesai_m1"
@@ -184,6 +190,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Mulai M2"
         type="date"
         id="tanggal_mulai_m2"
@@ -193,6 +200,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Tanggal Selesai M2"
         type="date"
         id="tanggal_selesai_m2"
@@ -202,6 +210,7 @@ function TambahKontainerForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="LO"
         type="number"
         id="lo"
@@ -213,7 +222,7 @@ function TambahKontainerForm({ perusahaan_data }) {
       {form.kontainer_id.map((containerId, index) => (
         <div key={index} className="flex items-center mb-2 w-full">
           <InputWithLabel
-            className={"w-full"}
+            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1] w-full"}
             label={`No Kontainer ke-${index + 1}`}
             type="text"
             id={`kontainer_id_${index}`}
