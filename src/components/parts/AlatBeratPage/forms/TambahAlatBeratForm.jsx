@@ -42,6 +42,7 @@ function TambahAlatBeratForm({ perusahaan_data }) {
   return (
     <form onSubmit={handleSubmit}>
       <InputWithLabel
+        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="No Nota"
         type="text"
         id="no_nota"

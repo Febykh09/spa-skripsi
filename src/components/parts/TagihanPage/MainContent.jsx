@@ -12,7 +12,7 @@ function MainContent({
   allPerusahaanData,
 }) {
   return (
-    <section className="flex min-h-screen">
+    <section className="flex flex-col md:flex-row gap-4 my-11">
       <Tabs defaultValue="lost_kargo" className="">
         <TabsList>
           <TabsTrigger value="lost_kargo">Lost Cargo</TabsTrigger>{" "}

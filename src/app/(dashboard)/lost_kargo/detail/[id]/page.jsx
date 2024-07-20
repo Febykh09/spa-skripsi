@@ -23,7 +23,7 @@ async function DetailLostKargoPage({ params }) {
       <div className="flex flex-col gap-2 mb-4">
         <p className="text-lg font-medium">Lokasi Penumpukan</p>
         <p className="rounded-lg px-3 py-2">
-          {dataLostKargo.lokasi_penumpukan}
+          {dataLostKargo.Lokasi.lokasi_penumpukan}
         </p>
       </div>
       <div className="flex flex-col gap-2 mb-4">

@@ -5,12 +5,14 @@ import InputWithLabel from "@/components/atom/InputWithLabel";
 import { createLostKargoData } from "@/actions/lost_kargo";
 import { useRouter } from "next/navigation";
 
-function TambahLostKargoForm({ perusahaan_data }) {
+function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
   const router = useRouter();
   const [perusahaan, setPerusahaan] = useState(perusahaan_data);
+  const [lokasi, setLokasi] = useState(lokasiData);
+
   const [form, setForm] = useState({
     no_nota: "",
-    lokasi_penumpukan: "",
+    lokasi_penumpukan: lokasi[0].id? lokasi[0].id : "",
     perusahaan_id: perusahaan[0].id? perusahaan[0].id : "",
     tanggal_mulai_penumpukan: "",
     tanggal_selesai_penumpukan: "",
@@ -52,6 +54,27 @@ function TambahLostKargoForm({ perusahaan_data }) {
         onChange={handleChange}
         isRequired={true}
       />
+      <div className="flex flex-col gap-2 mb-4">
+        <label className="text-lg font-medium" htmlFor="lokasi_penumpukan">
+          Lokasi Penumpukan
+        </label>
+        <select
+          className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
+          id="lokasi_penumpukan"
+          name="lokasi_penumpukan"
+          value={form.lokasi_penumpukan}
+          onChange={handleChange}
+          required
+        >
+          {lokasi?.map((item, idx) => (
+            <option key={idx} value={item.id}>
+              {item.lokasi_penumpukan}
+            </option>
+          ))}
+          {/* Tambahkan opsi lainnya sesuai dengan data perusahaan */}
+        </select>
+      </div>
+{/*       
       <InputWithLabel
         className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Lokasi Penumpukan"
@@ -61,7 +84,7 @@ function TambahLostKargoForm({ perusahaan_data }) {
         value={form.lokasi_penumpukan}
         onChange={handleChange}
         isRequired={true}
-      />
+      /> */}
       <div className="flex flex-col gap-2 mb-4">
         <label className="text-lg font-medium" htmlFor="perusahaan_id">
           Perusahaan

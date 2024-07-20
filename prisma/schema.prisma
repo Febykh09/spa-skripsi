@@ -32,10 +32,19 @@ model Perusahaan {
   updatedAt        DateTime   @updatedAt
 }
 
+model Lokasi {
+  id                         String      @id @default(cuid())
+  lokasi_penumpukan          String
+  lost_kargo                 LostKargo[]
+  createdAt                  DateTime   @default(now())
+  updatedAt                  DateTime   @updatedAt
+}
+
 model LostKargo {
   id                         String      @id @default(cuid())
   no_nota                    String
-  lokasi_penumpukan          String
+  lokasi_id                  String?
+  Lokasi                     Lokasi? @relation(fields: [lokasi_id], references: [id])
   perusahaan_id              String?
   Perusahaan                 Perusahaan? @relation(fields: [perusahaan_id], references: [id])
   tanggal_mulai_penumpukan   DateTime

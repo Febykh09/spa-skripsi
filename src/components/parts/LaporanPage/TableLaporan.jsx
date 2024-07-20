@@ -200,13 +200,14 @@ function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
   };
   return (
     <div className="mt-20 flex flex-col w-full">
-      <div className="flex justify-center gap-10 items-center w-full">
+      <div className="flex flex-row gap-x-3 justify-center gap-10 items-center w-full">
+
         <div className="flex flex-col gap-2 mb-4">
           <label className="text-lg font-medium" htmlFor="bulan">
             Bulan
           </label>
           <select
-            className="rounded-2xl px-4 py-3.5"
+            className="rounded-2xl px-4 py-3.5 border"
             id="bulan"
             name="bulan"
             value={filterBulan}
@@ -227,12 +228,13 @@ function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
             <option value="desember">Desember</option>
           </select>
         </div>
+
         <div className="flex flex-col gap-2 mb-4">
           <label className="text-lg font-medium" htmlFor="tahun">
             Tahun
           </label>
           <select
-            className="rounded-2xl px-4 py-3.5"
+            className="rounded-2xl px-4 py-3.5 border"
             id="tahun"
             name="tahun"
             value={filterTahun}

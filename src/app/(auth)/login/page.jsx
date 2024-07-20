@@ -74,7 +74,7 @@ function LoginPage() {
             </div>
 
              {/* Button login & register */}
-            <div>
+            <div className="border-b-2 pb-5">
               <form className="flex flex-row gap-x-6 items-center" onSubmit={handleSubmit}>
               <Button
               type={"submit"}
@@ -90,6 +90,9 @@ function LoginPage() {
               </Link>
               </form>
             </div>
+            <Link href={"/admin/login"} className="flex text base font-semibold py-3 px-6 w-[250px] justify-center border rounded-2xl text-[#121212] hover:bg-[#2563C8] hover:text-[#FFFFFF]">
+            Login admin access
+            </Link>
           </div>
         </div>
 

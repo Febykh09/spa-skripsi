@@ -230,7 +230,8 @@ function TableLostKargo({
                 <td className="py-2 px-4 border-b">{idx + 1}</td>
                 <td className="py-2 px-4 border-b">{kargo.no_nota}</td>
                 <td className="py-2 px-4 border-b uppercase">
-                  {kargo.lokasi_penumpukan}
+                  {kargo.Lokasi.lokasi_penumpukan}
+                  {/* {console.log(kargo)} */}
                 </td>
                 <td className="py-2 px-4 border-b">
                   {kargo.Perusahaan.nama_perusahaan}

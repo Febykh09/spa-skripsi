@@ -1,3 +1,4 @@
+import { getAllLokasi } from "@/actions/lokasi";
 import { getAllLostKargo } from "@/actions/lost_kargo";
 import { getAllPerusahaan } from "@/actions/perusahaan";
 import TableLostKargo from "@/components/parts/LostKargoPage/dashboard/TableLostKargo";
@@ -13,6 +14,8 @@ async function LostKargoPage() {
   const allLostKargoData = await getAllLostKargo();
   // console.log(allLostKargoData)
   const allPerusahaanData = await getAllPerusahaan()
+  const allLokasi = await getAllLokasi()
+
   const role = await getRole()
   // console.log(role)
   return (

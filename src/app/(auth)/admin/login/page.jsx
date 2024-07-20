@@ -2,6 +2,7 @@
 import { loginAdminAccount } from "@/actions/auth";
 import InputWithLabel from "@/components/atom/InputWithLabel";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -81,6 +82,9 @@ function LoginPage() {
               >
               Login
               </Button>
+              <Link href={"/admin/signup"} className="text-base font-semibold leading-normal text-[#2C71E1] hover:text-[#282828]">
+              Signup
+              </Link>
               </form>
             </div>
           </div>

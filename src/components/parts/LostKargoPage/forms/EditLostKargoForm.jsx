@@ -6,13 +6,15 @@ import { up, updateOneLostKargo, updateOneLostKargodateOneLostKargo } from "@/ac
 import { useRouter } from "next/navigation";
 import { formatDateToInput } from "@/utils/formatDateToInput";
 
-function EditLostKargoForm({ perusahaan_data, defaultData }) {
+function EditLostKargoForm({ perusahaan_data, defaultData, lokasiData }) {
   const router = useRouter();
 
   const [perusahaan, setPerusahaan] = useState(perusahaan_data);
+  const [lokasi, setLokasi] = useState(lokasiData);
+
   const [form, setForm] = useState({
     no_nota: defaultData.no_nota,
-    lokasi_penumpukan: defaultData.lokasi_penumpukan,
+    lokasi_penumpukan: defaultData.lokasi_id,
     perusahaan_id: defaultData.perusahaan_id,
     tanggal_mulai_penumpukan: formatDateToInput(defaultData.tanggal_mulai_penumpukan),
     tanggal_selesai_penumpukan: formatDateToInput(defaultData.tanggal_selesai_penumpukan),
@@ -52,7 +54,27 @@ function EditLostKargoForm({ perusahaan_data, defaultData }) {
         onChange={handleChange}
         isRequired={true}
       />
-      <InputWithLabel
+      <div className="flex flex-col gap-2 mb-4">
+        <label className="text-lg font-medium" htmlFor="lokasi_penumpukan">
+          Lokasi Penumpukan
+        </label>
+        <select
+          className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
+          id="lokasi_penumpukan"
+          name="lokasi_penumpukan"
+          value={form.lokasi_penumpukan}
+          onChange={handleChange}
+          required
+        >
+          {lokasi?.map((item, idx) => (
+            <option key={idx} value={item.id}>
+              {item.lokasi_penumpukan}
+            </option>
+          ))}
+          {/* Tambahkan opsi lainnya sesuai dengan data perusahaan */}
+        </select>
+      </div>
+      {/* <InputWithLabel
         label="Lokasi Penumpukan"
         type="text"
         id="lokasi_penumpukan"
@@ -60,7 +82,7 @@ function EditLostKargoForm({ perusahaan_data, defaultData }) {
         value={form.lokasi_penumpukan}
         onChange={handleChange}
         isRequired={true}
-      />
+      /> */}
       <div className="flex flex-col gap-2 mb-4">
         <label className="text-lg font-medium" htmlFor="perusahaan_id">
           Perusahaan

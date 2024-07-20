@@ -6,7 +6,7 @@ export async function createLostKargoData(form) {
   const result = await prisma.lostKargo.create({
     data: {
       no_nota: form.no_nota,
-      lokasi_penumpukan: form.lokasi_penumpukan,
+      lokasi_id: form.lokasi_penumpukan,
       perusahaan_id: form.perusahaan_id,
       tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
       tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
@@ -24,6 +24,7 @@ export async function getAllLostKargo() {
   const data = await prisma.lostKargo.findMany({
     include: {
       Perusahaan: true,
+      Lokasi : true
     },
   });
   return data;
@@ -36,6 +37,7 @@ export async function getOneLostKargo(id) {
     },
     include: {
       Perusahaan: true,
+      Lokasi : true
     },
   });
   return data;
@@ -47,7 +49,7 @@ export async function updateOneLostKargo(id, form) {
     },
     data: {
       no_nota: form.no_nota,
-      lokasi_penumpukan: form.lokasi_penumpukan,
+      lokasi_id: form.lokasi_penumpukan,
       perusahaan_id: form.perusahaan_id,
       tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
       tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
