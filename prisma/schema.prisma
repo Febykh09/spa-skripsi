@@ -42,7 +42,7 @@ model Lokasi {
 
 model LostKargo {
   id                         String      @id @default(cuid())
-  no_nota                    String
+  no_nota                    String     @unique
   lokasi_id                  String?
   Lokasi                     Lokasi? @relation(fields: [lokasi_id], references: [id])
   perusahaan_id              String?
@@ -59,7 +59,7 @@ model LostKargo {
 
 model AlatBerat {
   id                         String      @id @default(cuid())
-  no_nota                    String
+  no_nota                    String     @unique
   perusahaan_id              String?
   Perusahaan                 Perusahaan? @relation(fields: [perusahaan_id], references: [id])
   tanggal_mulai_penumpukan   DateTime
@@ -74,7 +74,7 @@ model AlatBerat {
 
 model Kontainer {
   id                 String         @id @default(cuid())
-  no_nota            String
+  no_nota                    String     @unique
   ukuran_kontainer   String
   hari               Int
   perusahaan_id      String?

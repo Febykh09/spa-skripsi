@@ -51,10 +51,19 @@ function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
     doc.addImage(imageUrl, "PNG", imageX, imageY, imageWidth, imageHeight);
 
     // Tambahkan judul
-    const title = "Laporan Rekapitulasi";
+    const title = `Laporan Rekapitulasi${filterBulan && " Bulan "+ capitalize(filterBulan)}${filterTahun && " Tahun "+ filterTahun} `;
     doc.setFontSize(16);
     doc.text(title, 120, 20);
 
+     // Tambahkan ttdt
+     const jabatan = `Direktur Kanpel`;
+     doc.setFontSize(11);
+     doc.text(jabatan, 242.5, 170);
+ 
+     const ttd = `(_______________________)`;
+     doc.setFontSize(11);
+     doc.text(ttd, 230, 200);
+ 
     // Kolom tabel
     const tableColumn = [
       "No",

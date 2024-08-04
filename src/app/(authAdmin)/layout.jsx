@@ -12,7 +12,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
+  const isTokenExist = cookies().get("token")
+  if(isTokenExist?.value){
+    redirect("/")
+  }
 
   return (
     <html lang="en">

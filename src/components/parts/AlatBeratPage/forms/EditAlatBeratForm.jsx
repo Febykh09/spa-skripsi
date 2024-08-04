@@ -13,8 +13,12 @@ function EditAlatBeratForm({ perusahaan_data, defaultData }) {
   const [form, setForm] = useState({
     no_nota: defaultData.no_nota,
     perusahaan_id: defaultData.perusahaan_id,
-    tanggal_mulai_penumpukan: formatDateToInput(defaultData.tanggal_mulai_penumpukan),
-    tanggal_selesai_penumpukan: formatDateToInput(defaultData.tanggal_selesai_penumpukan),
+    tanggal_mulai_penumpukan: formatDateToInput(
+      defaultData.tanggal_mulai_penumpukan
+    ),
+    tanggal_selesai_penumpukan: formatDateToInput(
+      defaultData.tanggal_selesai_penumpukan
+    ),
     jenis_barang: defaultData.jenis_barang,
     satuan: +defaultData.satuan,
     jumlah_uang: +defaultData.jumlah_uang,
@@ -29,14 +33,20 @@ function EditAlatBeratForm({ perusahaan_data, defaultData }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Tambahkan logika untuk mengirim data ke server di sini
-    // console.log(form);
-    const updatedData = await updateAlatBerat(defaultData.id,form);
-    if (updatedData) {
-      alert("data diupdate!");
-      router.push("/alat_berat");
-      router.refresh();
+    try {
+      e.preventDefault();
+      // Tambahkan logika untuk mengirim data ke server di sini
+      // console.log(form);
+      const updatedData = await updateAlatBerat(defaultData.id, form);
+      if (updatedData) {
+        alert("data diupdate!");
+        router.push("/alat_berat");
+        router.refresh();
+      }
+    } catch (error) {
+      alert(
+        "Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi"
+      );
     }
   };
 

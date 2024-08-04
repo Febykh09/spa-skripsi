@@ -33,6 +33,7 @@ export async function registerAdminAccount(form) {
 }
 
 export async function loginAdminAccount(form) {
+  console.log("form >> ", form)
   const isAccountExist = await prisma.user.findFirst({
     where: {
       email: form.email,
@@ -132,5 +133,7 @@ export async function loginUserAccount(form) {
 
 export async function handleLogout(){
   cookies().delete("token")
+  cookies().delete("role")
+  
   redirect("/login")
 }

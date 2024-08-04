@@ -71,6 +71,8 @@ function MainContent({
         <h1 className="text-3xl font-bold leading-snug tracking-wide text-[#9F9F9F]">
           Dashboard
         </h1>
+
+        {/* Filter Bulan dan Tahun */}
         <div className="flex flex-row gap-x-4">
           <select
             className="rounded-2xl px-4 py-3.5 border"
@@ -117,6 +119,7 @@ function MainContent({
         </div>
       </div>
       
+      {/* Dashboard Card Menu */}
       <ul className="grid md:grid-cols-3 gap-10 mt-10 justify-between">
         <li>
           <DashboardCard
@@ -143,24 +146,33 @@ function MainContent({
           />
         </li>
       </ul>
-
-    <div className="flex flex-col gap-y-12">
-      <h3 className="text-2xl font-semibold leading-snug text-[#202020] mt-24">
+    
+    {/* Section Jumlah Tagihan Dashboard Utama */}
+    <div className="flex flex-col gap-y-8">
+        <div className="relative w-full">
+          <div className="absolute inset-0 border-b-2 z-10 top-48"></div>
+        </div>
+      <h3 className="text-2xl font-semibold leading-snug text-[#202020] mt-14">
         Tagihan
       </h3>
+      
       <div className="flex flex-col gap-y-8">
-        {/* Title */}
-        <div className="flex flex-row gap-x-64 items-center border-b-2 pb-3">
-          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Lost Kargo</h4>
-          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Kontainer</h4>
-          <h4 className="text-lg font-semibold leading-normal text-[#202020]">Alat Berat</h4>
-        </div>
-
         {/* Content */}
-        <div className="flex flex-row gap-x-[230px]">
-          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalLostKargoTagihan)}</p>
-          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalKontainerTagihan)}</p>
-          <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalAlatBeratTagihan)}</p>
+        <div className="flex flex-row gap-x-60 items-center">
+          <div className="flex flex-col gap-y-10">
+            <h4 className="text-lg font-semibold leading-normal text-[#202020]">Lost Kargo</h4>
+            <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalLostKargoTagihan)}</p>
+          </div>
+
+          <div className="flex flex-col gap-y-10">
+            <h4 className="text-lg font-semibold leading-normal text-[#202020]">Kontainer</h4>
+            <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalKontainerTagihan)}</p>
+          </div>
+
+          <div className="flex flex-col gap-y-10">
+            <h4 className="text-lg font-semibold leading-normal text-[#202020]">Alat Berat</h4>
+            <p className="text-base font-medium leading-relaxed tracking-wider text-[#3C3C3C]">{convertToRupiah(totalAlatBeratTagihan)}</p>
+          </div>
         </div>
       </div>
     </div>  

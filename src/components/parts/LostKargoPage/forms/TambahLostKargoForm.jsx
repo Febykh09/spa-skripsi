@@ -5,15 +5,15 @@ import InputWithLabel from "@/components/atom/InputWithLabel";
 import { createLostKargoData } from "@/actions/lost_kargo";
 import { useRouter } from "next/navigation";
 
-function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
+function TambahLostKargoForm({ perusahaan_data, lokasiData }) {
   const router = useRouter();
   const [perusahaan, setPerusahaan] = useState(perusahaan_data);
   const [lokasi, setLokasi] = useState(lokasiData);
 
   const [form, setForm] = useState({
     no_nota: "",
-    lokasi_penumpukan: lokasi[0].id? lokasi[0].id : "",
-    perusahaan_id: perusahaan[0].id? perusahaan[0].id : "",
+    lokasi_penumpukan: lokasi[0].id ? lokasi[0].id : "",
+    perusahaan_id: perusahaan[0].id ? perusahaan[0].id : "",
     tanggal_mulai_penumpukan: "",
     tanggal_selesai_penumpukan: "",
     jenis_barang: "",
@@ -31,21 +31,29 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Tambahkan logika untuk mengirim data ke server di sini
-    // console.log(form);
-    const createData = await createLostKargoData(form);
-    if (createData) {
-      alert("data dibuat!");
-      router.push("/lost_kargo");
-      router.refresh();
+    try {
+      e.preventDefault();
+      // Tambahkan logika untuk mengirim data ke server di sini
+      // console.log(form);
+      const createData = await createLostKargoData(form);
+      if (createData) {
+        alert("data dibuat!");
+        router.push("/lost_kargo");
+        router.refresh();
+      }
+    } catch (error) {
+      alert(
+        "Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi"
+      );
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="No Nota"
         type="text"
         id="no_nota"
@@ -74,7 +82,7 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
           {/* Tambahkan opsi lainnya sesuai dengan data perusahaan */}
         </select>
       </div>
-{/*       
+      {/*       
       <InputWithLabel
         className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
         label="Lokasi Penumpukan"
@@ -106,7 +114,9 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
         </select>
       </div>
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Tanggal Mulai Penumpukan"
         type="date"
         id="tanggal_mulai_penumpukan"
@@ -116,7 +126,9 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Tanggal Selesai Penumpukan"
         type="date"
         id="tanggal_selesai_penumpukan"
@@ -126,7 +138,9 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Jenis Barang"
         type="text"
         id="jenis_barang"
@@ -136,7 +150,9 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Satuan (Ton/m3)"
         type="number"
         id="satuan"
@@ -146,7 +162,9 @@ function TambahLostKargoForm({ perusahaan_data , lokasiData}) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Jumlah Uang (Rp)"
         type="number"
         id="jumlah_uang"

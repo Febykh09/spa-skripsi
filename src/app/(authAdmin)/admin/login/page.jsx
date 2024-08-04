@@ -20,10 +20,10 @@ function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      console.log("hello")
       const response = await loginAdminAccount(form);
-      
       if (response) {
-        alert("Buat Akun Admin Berhasil!");
+        alert("Login Berhasil!");
         router.push("/");
         router.refresh();
       }
@@ -33,9 +33,9 @@ function LoginPage() {
     }
   }
   return (
-    <main className="container mx-auto flex justify-center items-center h-screen md:h-auto md:min-h-screen">
-      <div className="flex flex-row gap-x-44 justify-between">
-        <div className="flex flex-col gap-y-24 mt-5 w-[380px]">
+    <main className="container mx-auto flex justify-center h-screen md:h-auto md:min-h-screen pt-8 pb-8">
+      <div className="flex flex-row gap-x-44 justify-between items-start">
+        <div className="flex flex-col gap-y-16 w-[380px]">
 
           <div className="flex flex-row gap-x-5 items-center">
             <img src="/gambar/logobpbatam.png" className="h-[72px]"/>
@@ -45,7 +45,7 @@ function LoginPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-12">
+          <div className="flex flex-col gap-y-8">
             {/* form email & password */}
             <div className="flex flex-col gap-y-12">
               <form onSubmit={handleSubmit}>
@@ -91,7 +91,7 @@ function LoginPage() {
         </div>
 
         <div>
-          <img src="/gambar/Port Illustration.png" className="h-[650px] w-[410px]"/>
+          <img src="/gambar/Port Illustration.png" className="h-[540px] w-[330px]"/>
         </div>
       </div>
       

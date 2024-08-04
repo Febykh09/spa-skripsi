@@ -3,20 +3,24 @@
 import prisma from "../../lib/prisma";
 
 export async function createAlatBerat(form) {
-  const result = await prisma.alatBerat.create({
-    data: {
-      no_nota: form.no_nota,
-      perusahaan_id: form.perusahaan_id,
-      tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
-      tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
-      jenis_barang: form.jenis_barang,
-      satuan: +form.satuan,
-      jumlah_uang: +form.jumlah_uang,
-      status_pembayaran: form.status_pembayaran,
-    },
-  });
+  try {
+    const result = await prisma.alatBerat.create({
+      data: {
+        no_nota: form.no_nota,
+        perusahaan_id: form.perusahaan_id,
+        tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
+        tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
+        jenis_barang: form.jenis_barang,
+        satuan: +form.satuan,
+        jumlah_uang: +form.jumlah_uang,
+        status_pembayaran: form.status_pembayaran,
+      },
+    });
 
-  return result;
+    return result;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 export async function getAllAlatBerat() {
@@ -40,27 +44,28 @@ export async function getOneAlatBerat(id) {
   return data;
 }
 
-
 export async function updateAlatBerat(id, form) {
-  const data = await prisma.alatBerat.update({
-    where: {
-      id: id,
-    },
-    data: {
-      no_nota: form.no_nota,
-      perusahaan_id: form.perusahaan_id,
-      tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
-      tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
-      jenis_barang: form.jenis_barang,
-      satuan: +form.satuan,
-      jumlah_uang: +form.jumlah_uang,
-      status_pembayaran: form.status_pembayaran,
-    },
-  
-  });
-  return data;
+  try {
+    const data = await prisma.alatBerat.update({
+      where: {
+        id: id,
+      },
+      data: {
+        no_nota: form.no_nota,
+        perusahaan_id: form.perusahaan_id,
+        tanggal_mulai_penumpukan: new Date(form.tanggal_mulai_penumpukan),
+        tanggal_selesai_penumpukan: new Date(form.tanggal_selesai_penumpukan),
+        jenis_barang: form.jenis_barang,
+        satuan: +form.satuan,
+        jumlah_uang: +form.jumlah_uang,
+        status_pembayaran: form.status_pembayaran,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
-
 
 export async function deleteOneAlatBerat(id) {
   const data = await prisma.alatBerat.delete({
@@ -69,4 +74,27 @@ export async function deleteOneAlatBerat(id) {
     },
   });
   return data;
+}
+
+
+
+export async function updateStatusPembayaranAlatBerat(id) {
+  try {
+    const dataFind = await prisma.alatBerat.findFirst({
+      where : {
+        id : id
+      }
+    })
+    const data = await prisma.alatBerat.update({
+      where: {
+        id: id,
+      },
+      data: {
+        status_pembayaran: !dataFind.status_pembayaran,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }

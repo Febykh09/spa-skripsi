@@ -2,7 +2,11 @@
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import InputWithLabel from "@/components/atom/InputWithLabel";
-import { up, updateOneLostKargo, updateOneLostKargodateOneLostKargo } from "@/actions/lost_kargo";
+import {
+  up,
+  updateOneLostKargo,
+  updateOneLostKargodateOneLostKargo,
+} from "@/actions/lost_kargo";
 import { useRouter } from "next/navigation";
 import { formatDateToInput } from "@/utils/formatDateToInput";
 
@@ -16,8 +20,12 @@ function EditLostKargoForm({ perusahaan_data, defaultData, lokasiData }) {
     no_nota: defaultData.no_nota,
     lokasi_penumpukan: defaultData.lokasi_id,
     perusahaan_id: defaultData.perusahaan_id,
-    tanggal_mulai_penumpukan: formatDateToInput(defaultData.tanggal_mulai_penumpukan),
-    tanggal_selesai_penumpukan: formatDateToInput(defaultData.tanggal_selesai_penumpukan),
+    tanggal_mulai_penumpukan: formatDateToInput(
+      defaultData.tanggal_mulai_penumpukan
+    ),
+    tanggal_selesai_penumpukan: formatDateToInput(
+      defaultData.tanggal_selesai_penumpukan
+    ),
     jenis_barang: defaultData.jenis_barang,
     satuan: +defaultData.satuan,
     jumlah_uang: +defaultData.jumlah_uang,
@@ -32,14 +40,20 @@ function EditLostKargoForm({ perusahaan_data, defaultData, lokasiData }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Tambahkan logika untuk mengirim data ke server di sini
-    // console.log(form);
-    const updatedData = await updateOneLostKargo(defaultData.id,form);
-    if (updatedData) {
-      alert("data diupdate!");
-      router.push("/lost_kargo");
-      router.refresh();
+    try {
+      e.preventDefault();
+      // Tambahkan logika untuk mengirim data ke server di sini
+      // console.log(form);
+      const updatedData = await updateOneLostKargo(defaultData.id, form);
+      if (updatedData) {
+        alert("data diupdate!");
+        router.push("/lost_kargo");
+        router.refresh();
+      }
+    } catch (error) {
+      alert(
+        "Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi"
+      );
     }
   };
 

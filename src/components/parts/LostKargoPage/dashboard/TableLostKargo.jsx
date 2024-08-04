@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import InputWithLabel from "@/components/atom/InputWithLabel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { deleteOneLostKargo } from "@/actions/lost_kargo";
+import { deleteOneLostKargo, updateStatusPembayaranLostKargo } from "@/actions/lost_kargo";
 import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import moment from "moment";
 import useRole from "@/utils/useRole";
+import { Check, X } from "lucide-react";
 function TableLostKargo({
   allLostKargoData,
   allPerusahaan,
@@ -54,6 +55,11 @@ function TableLostKargo({
       (!filters.perusahaan_id || kargo.perusahaan_id === filters.perusahaan_id)
     );
   });
+  
+  const changeStatusPembayaran = async (id) => {
+    await updateStatusPembayaranLostKargo(id)
+    router.refresh()
+  }
 
   const handlePrintData = () => {
     const doc = new jsPDF();
@@ -141,7 +147,9 @@ function TableLostKargo({
       {!hideFilter && (
         <section className="flex flex-col md:flex-row gap-4 my-11">
           <InputWithLabel
-            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+            className={
+              "rounded-2xl w-[220px] border border-[#CACACA] focus:outline-[#2C71E1]"
+            }
             label="No Nota"
             type="text"
             id="no_nota"
@@ -152,7 +160,9 @@ function TableLostKargo({
             isRequired={false}
           />
           <InputWithLabel
-            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+            className={
+              "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+            }
             label="Tanggal Mulai Penumpukan"
             type="date"
             id="tanggal_mulai_penumpukan"
@@ -163,7 +173,9 @@ function TableLostKargo({
             isRequired={false}
           />
           <InputWithLabel
-            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+            className={
+              "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+            }
             label="Tanggal Selesai Penumpukan"
             type="date"
             id="tanggal_selesai_penumpukan"
@@ -178,7 +190,7 @@ function TableLostKargo({
               Perusahaan
             </label>
             <select
-              className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
+              className="rounded-2xl px-3 py-2.5 w-[240px] border border-[#CACACA] focus:outline-[#2C71E1]"
               id="perusahaan_id"
               name="perusahaan_id"
               value={filters.perusahaan_id}
@@ -273,15 +285,15 @@ function TableLostKargo({
                 )}
                 {hideAction && (
                   <td className={`py-2 px-4 border-b text-center`}>
-                    <span
-                      className={`px-3 py-2 border rounded-md border-black text-center ${
-                        kargo.status_pembayaran
-                          ? "bg-[#E0E7F9]"
-                          : "bg-[#F9E0E0]"
-                      }`}
-                    >
-                      {kargo.status_pembayaran ? "Lunas" : "Belum Lunas"}
-                    </span>
+                    {kargo.status_pembayaran ? (
+                      <button onClick={() => {changeStatusPembayaran(kargo.id)}} className="p-2 rounded-md bg-[#E0E7F9] text-black ">
+                      <Check />
+                    </button>
+                    ) : (
+                      <button onClick={() => {changeStatusPembayaran(kargo.id)}} className="p-2 rounded-md bg-[#F9E0E0] text-black ">
+                        <X />
+                      </button>
+                    )}
                   </td>
                 )}
               </tr>

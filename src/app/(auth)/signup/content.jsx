@@ -1,11 +1,12 @@
 "use client";
-import { registerAdminAccount } from "@/actions/auth";
+import { registerAdminAccount, registerUserAccount } from "@/actions/auth";
 import InputWithLabel from "@/components/atom/InputWithLabel";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-function SignUpPage() {
+function ContentSignUpPage() {
   const router = useRouter();
   const [form, setForm] = useState({
     email: "",
@@ -19,11 +20,11 @@ function SignUpPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await registerAdminAccount(form);
+      const response = await registerUserAccount(form);
 
       if (response) {
-        alert("Buat Akun Admin Berhasil!");
-        router.push("/admin/login");
+        alert("Buat Akun User Berhasil!");
+        router.push("/login");
         router.refresh();
       }
     } catch (error) {
@@ -31,19 +32,19 @@ function SignUpPage() {
     }
   }
   return (
-    <main className="container mx-auto flex justify-center items-center min-h-screen">
-      <div className="flex flex-row gap-x-44 justify-between">
-        <div className="flex flex-col gap-y-24 mt-5 w-[380px]">
+    <main className="container mx-auto flex justify-center h-screen md:h-auto md:min-h-screen pt-8 pb-8">
+      <div className="flex flex-row gap-x-44 justify-between items-start">
+        <div className="flex flex-col gap-y-16 w-[380px]">
 
           <div className="flex flex-row gap-x-5 items-center">
             <img src="/gambar/logobpbatam.png" className="h-[72px]"/>
             <div className="flex flex-col gap-1">
               <h1 className="text-3xl font-bold leading-snug tracking-wide text-[#202020]">Register</h1>
-              <p className="text-base font-medium leading-normal tracking-wide text-[#3C3C3C]">Admin access</p>
+              <p className="text-base font-medium leading-normal tracking-wide text-[#3C3C3C]">User access</p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-12">
+          <div className="flex flex-col gap-y-8">
             {/* form email & password */}
             <div className="flex flex-col gap-y-12">
               <form onSubmit={handleSubmit}>
@@ -86,11 +87,11 @@ function SignUpPage() {
         </div>
 
         <div>
-          <img src="/gambar/Port Illustration.png" className="h-[650px] w-[410px]"/>
+          <img src="/gambar/Port Illustration.png" className="h-[540px] w-[330px]"/>
         </div>
       </div>
     </main>
   );
 }
 
-export default SignUpPage;
+export default ContentSignUpPage;

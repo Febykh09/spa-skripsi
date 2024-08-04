@@ -12,8 +12,8 @@ function MainContent({
   allPerusahaanData,
 }) {
   return (
-    <section className="flex flex-col md:flex-row gap-4 my-11">
-      <Tabs defaultValue="lost_kargo" className="">
+    <section className="flex flex-row md:flex-row gap-4 my-11">
+      <Tabs defaultValue="lost_kargo">
         <TabsList>
           <TabsTrigger value="lost_kargo">Lost Cargo</TabsTrigger>{" "}
           <span className="font-bold text-xl text-black shadow-none">-</span>

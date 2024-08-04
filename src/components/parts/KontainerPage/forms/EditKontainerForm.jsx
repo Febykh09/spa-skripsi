@@ -59,6 +59,7 @@ function EditKontainerForm({ perusahaan_data, defaultData }) {
   };
 
   const handleSubmit = async (e) => {
+   try {
     e.preventDefault();
     const updatedData = await updateOneKontainer(defaultData.id, form);
     if (updatedData) {
@@ -66,6 +67,9 @@ function EditKontainerForm({ perusahaan_data, defaultData }) {
       router.push("/kontainer");
       router.refresh();
     }
+   } catch (error) {
+    alert("Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi")
+   }
   };
 
   return (

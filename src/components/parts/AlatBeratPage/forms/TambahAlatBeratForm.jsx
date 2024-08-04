@@ -10,7 +10,7 @@ function TambahAlatBeratForm({ perusahaan_data }) {
   const [perusahaan, setPerusahaan] = useState(perusahaan_data);
   const [form, setForm] = useState({
     no_nota: "",
-    perusahaan_id: perusahaan[0].id? perusahaan[0].id : "",
+    perusahaan_id: perusahaan[0].id ? perusahaan[0].id : "",
     tanggal_mulai_penumpukan: "",
     tanggal_selesai_penumpukan: "",
     jenis_barang: "",
@@ -28,21 +28,29 @@ function TambahAlatBeratForm({ perusahaan_data }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Tambahkan logika untuk mengirim data ke server di sini
-    // console.log(form);
-    const createData = await createAlatBerat(form);
-    if (createData) {
-      alert("data dibuat!");
-      router.push("/alat_berat");
-      router.refresh();
+    try {
+      e.preventDefault();
+      // Tambahkan logika untuk mengirim data ke server di sini
+      // console.log(form);
+      const createData = await createAlatBerat(form);
+      if (createData) {
+        alert("data dibuat!");
+        router.push("/alat_berat");
+        router.refresh();
+      }
+    } catch (error) {
+      alert(
+        "Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi"
+      );
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="No Nota"
         type="text"
         id="no_nota"
@@ -72,7 +80,9 @@ function TambahAlatBeratForm({ perusahaan_data }) {
         </select>
       </div>
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Tanggal Mulai Penumpukan"
         type="date"
         id="tanggal_mulai_penumpukan"
@@ -82,7 +92,9 @@ function TambahAlatBeratForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Tanggal Selesai Penumpukan"
         type="date"
         id="tanggal_selesai_penumpukan"
@@ -92,7 +104,9 @@ function TambahAlatBeratForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Jenis Barang"
         type="text"
         id="jenis_barang"
@@ -102,7 +116,9 @@ function TambahAlatBeratForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Satuan (Ton/m3)"
         type="number"
         id="satuan"
@@ -112,7 +128,9 @@ function TambahAlatBeratForm({ perusahaan_data }) {
         isRequired={true}
       />
       <InputWithLabel
-        className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+        className={
+          "rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"
+        }
         label="Jumlah Uang (Rp)"
         type="number"
         id="jumlah_uang"

@@ -7,10 +7,11 @@ import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { deleteOneKontainer } from "@/actions/kontainer";
+import { deleteOneKontainer, updateStatusPembayaranKontainer } from "@/actions/kontainer";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import useRole from "@/utils/useRole";
+import { Check, X } from "lucide-react";
 
 function TableKontainer({
   allKontainerData,
@@ -65,6 +66,10 @@ function TableKontainer({
     );
   });
 
+  const changeStatusPembayaran = async (id) => {
+    await updateStatusPembayaranKontainer(id)
+    router.refresh()
+  }
   async function handleDeleteData(id) {
     const dataDeleted = await deleteOneKontainer(id);
     if (dataDeleted) {
@@ -173,9 +178,9 @@ function TableKontainer({
   return (
     <div>
       {!hideFilter && (
-        <section className="flex flex-col md:flex-row gap-4 my-11">
+        <section className="flex flex-col md:flex-row gap-4 my-11 justify-between">
           <InputWithLabel
-            className={"rounded-2xl border border-[#CACACA] focus:outline-[#2C71E1]"}
+            className={"rounded-2xl w-[220px] border border-[#CACACA] focus:outline-[#2C71E1]"}
             label="No Nota"
             type="text"
             id="no_nota"
@@ -212,7 +217,7 @@ function TableKontainer({
               Perusahaan
             </label>
             <select
-              className="rounded-2xl px-3 py-2.5 border border-[#CACACA] focus:outline-[#2C71E1]"
+              className="rounded-2xl px-3 py-2.5 w-[240px] border border-[#CACACA] focus:outline-[#2C71E1]"
               id="perusahaan_id"
               name="perusahaan_id"
               value={filters.perusahaan_id}
@@ -354,16 +359,16 @@ function TableKontainer({
                   )}
                   {hideAction && (
                     <td className={`py-2 px-4 border-b text-center`}>
-                      <span
-                        className={`px-3 py-2 border rounded-md border-black text-center ${
-                          kargo.status_pembayaran
-                            ? "bg-[#E0E7F9]"
-                            : "bg-[#F9E0E0]"
-                        }`}
-                      >
-                        {kargo.status_pembayaran ? "Lunas" : "Belum Lunas"}
-                      </span>
-                    </td>
+                    {kargo.status_pembayaran ? (
+                      <button onClick={() => {changeStatusPembayaran(kargo.id)}} className="p-2 rounded-md bg-[#E0E7F9] text-black ">
+                      <Check />
+                    </button>
+                    ) : (
+                      <button onClick={() => {changeStatusPembayaran(kargo.id)}} className="p-2 rounded-md bg-[#F9E0E0] text-black ">
+                        <X />
+                      </button>
+                    )}
+                  </td>
                   )}
                 </tr>
               </React.Fragment>

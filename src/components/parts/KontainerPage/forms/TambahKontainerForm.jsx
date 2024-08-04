@@ -57,13 +57,18 @@ function TambahKontainerForm({ perusahaan_data }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
     const createData = await createKontainerData(form);
     if (createData) {
       alert("Data Kontainer dibuat!");
       router.push("/kontainer");
       router.refresh();
     }
+    } catch (error) {
+      alert("Cek Data Kontainer! Pastikan No Nota Berbeda dan Data Lain Terisi")
+    }
+    
   };
 
   return (

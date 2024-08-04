@@ -237,6 +237,20 @@ function TableLaporanHooks({
         } else if (item.ukuran_kontainer === "40 KOSONG") {
           updatedDataLaporan[bulanIndex].data.kontainer_40_kosong += 1; // Update as per your requirement
         }
+
+        updatedDataLaporan[bulanIndex].data.kontainer_20_isi =
+          Number(JSON.parse(item.kontainer_id).length) *
+          updatedDataLaporan[bulanIndex].data.kontainer_20_isi; // Update as per your requirement
+        updatedDataLaporan[bulanIndex].data.kontainer_20_kosong =
+          Number(JSON.parse(item.kontainer_id).length) *
+          updatedDataLaporan[bulanIndex].data.kontainer_20_kosong; // Update as per your requirement
+        updatedDataLaporan[bulanIndex].data.kontainer_40_isi =
+          Number(JSON.parse(item.kontainer_id).length) *
+          updatedDataLaporan[bulanIndex].data.kontainer_40_isi; // Update as per your requirement
+        updatedDataLaporan[bulanIndex].data.kontainer_40_kosong =
+          Number(JSON.parse(item.kontainer_id).length) *
+          updatedDataLaporan[bulanIndex].data.kontainer_40_kosong; // Update as per your requirement
+
         // Calculate jumlah_uang_kontainer based on jumlah_uang field in each kontainer
         updatedDataLaporan[bulanIndex].data.jumlah_uang_kontainer +=
           item.jumlah_uang;
