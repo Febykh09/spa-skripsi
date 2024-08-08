@@ -56,7 +56,7 @@ function TableLaporan({ dataKontainer, dataAlatBerat, dataLostKargo }) {
     doc.text(title, 120, 20);
 
      // Tambahkan ttdt
-     const jabatan = `Direktur Kanpel`;
+     const jabatan = `Kepala Adminsitrasi Penumpukan Barang`;
      doc.setFontSize(11);
      doc.text(jabatan, 242.5, 170);
  
